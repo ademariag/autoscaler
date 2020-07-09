@@ -50,15 +50,12 @@ steps:
   settings:
     auto_tag: true
     target: production
-    repo: drone/autoscaler
+    repo: alledm/autoscaler
     password:
       from_secret: docker_password
     username:
       from_secret: docker_username
-  when:
-    event:
-    - push
-    - tag
+
 
 volumes:
 - name: deps
