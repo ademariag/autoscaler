@@ -17,6 +17,7 @@ func TestOptions(t *testing.T) {
 		WithMachineImage("ubuntu-1604-lts"),
 		WithMachineType("c3.large"),
 		WithNetwork("global/defaults/foo"),
+		WithServiceAccountEmail("default"),
 		WithProject("my-project"),
 		WithTags("drone", "agent"),
 		WithZone("us-central1-f"),
@@ -50,5 +51,8 @@ func TestOptions(t *testing.T) {
 	}
 	if got, want := p.zone, "us-central1-f"; got != want {
 		t.Errorf("Want zone %q, got %q", want, got)
+	}
+	if got, want := p.serviceAccountEmail, "default"; got != want {
+		t.Errorf("Want service account name %q, got %q", want, got)
 	}
 }
