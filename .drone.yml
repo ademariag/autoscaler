@@ -43,20 +43,13 @@ steps:
     DATABASE_CONFIG: "root:password@tcp(mysql:3306)/test?parseTime=true"
     DATABASE_DRIVER: mysql
 
-- name: build
-  pull: default
-  image: golang
-  volumes:
-  - name: deps
-    path: /go
-  commands:
-  - sh .drone.sh
 
 - name: publish
   pull: default
   image: plugins/docker
   settings:
     auto_tag: true
+    target: production
     repo: drone/autoscaler
     password:
       from_secret: docker_password
