@@ -122,3 +122,10 @@ func WithZone(zone string) Option {
 		p.zone = zone
 	}
 }
+
+// WithServiceAccountEmail returns an option to set the ServiceAccountEmail.
+func WithServiceAccountEmail(email string) Option {
+	return func(p *provider) {
+		p.serviceAccountEmail = email
+	}
+}
