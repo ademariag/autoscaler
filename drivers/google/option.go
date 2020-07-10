@@ -7,6 +7,7 @@ package google
 import (
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/drone/autoscaler/drivers/internal/userdata"
 
@@ -127,5 +128,12 @@ func WithZone(zone string) Option {
 func WithServiceAccountEmail(email string) Option {
 	return func(p *provider) {
 		p.serviceAccountEmail = email
+	}
+}
+
+// WithScopes returns an option to set the scopes.
+func WithScopes(scopes string) Option {
+	return func(p *provider) {
+		p.scopes = strings.Split(scopes, ",")
 	}
 }
